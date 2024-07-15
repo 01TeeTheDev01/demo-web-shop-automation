@@ -1,0 +1,16 @@
+Requirements will be:
+1. Register user.
+2. ⁠login as user.
+3. ⁠Validate landing or home page.
+4. ⁠Add item from each tab or page to the cart.
+5. ⁠Validate that items added on the cart are correct.
+6. ⁠Select country, State/ province and enter zip code.
+7. ⁠confirm terms of service
+8. ⁠checkout
+9. ⁠Enter all details on Checkout Billing address
+10. ⁠Continue
+11. ⁠Select Shipping Address
+12. ⁠Select Shipping Method
+13. ⁠Select Payment Method
+14. ⁠Fill in payment information
+15. ⁠Confirm Order and Logout
