@@ -1,13 +1,16 @@
-package com.demo.webshopautomation.utils;
+package com.demo.webshopautomation.business;
+
+import com.demo.webshopautomation.repository.IUrlHelper;
+import com.demo.webshopautomation.utils.UrlSelector;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class TestUtils {
+public class UrlHelper implements IUrlHelper {
 
     private final Map<UrlSelector, String> urlCollection;
 
-    public TestUtils(){
+    public UrlHelper(){
         urlCollection = new HashMap<>();
         initItems();
     }
