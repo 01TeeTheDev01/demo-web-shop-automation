@@ -6,7 +6,6 @@ import com.demo.webshopautomation.repository.IUrlHelper;
 import com.demo.webshopautomation.utils.BaseUtils;
 import com.demo.webshopautomation.utils.UrlSelector;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -23,11 +22,11 @@ public class HomePage implements IHomePageHelper {
     private final IUrlHelper _urlHelper;
     private final List<WebElement> _elements;
 
-    public HomePage(IBrowserHelper browserHelper, IUrlHelper urlHelper){
+    public HomePage(IBrowserHelper browserHelper, IUrlHelper urlHelper, ArrayList<WebElement> webElements){
         _browserHelper = browserHelper;
         _urlHelper = urlHelper;
+        _elements = webElements;
         PageFactory.initElements(_browserHelper.getWebDriver(), this);
-        _elements = new ArrayList<>();
     }
 
     @Override
@@ -39,9 +38,7 @@ public class HomePage implements IHomePageHelper {
 
     @Override
     public void waitForElements() {
-        _elements.add(_browserHelper.getWebDriver().findElement(_registerElement));
-        _elements.add(_browserHelper.getWebDriver().findElement(_loginElement));
-        waitForRequiredElements(_elements);
+        waitForRequiredElements(_loginElement, _registerElement, _elements);
     }
 
     @Override
@@ -50,8 +47,12 @@ public class HomePage implements IHomePageHelper {
             _browserHelper.getWebDriver().findElement(_loginElement).click();
     }
 
-    private void waitForRequiredElements(List<WebElement> elements) {
+    private void waitForRequiredElements(By loginElement, By registerElement, List<WebElement> elements) {
         try{
+            if(!elements.isEmpty())
+                elements.clear();
+            elements.add(_browserHelper.getWebDriver().findElement(loginElement));
+            elements.add(_browserHelper.getWebDriver().findElement(registerElement));
             var wait = new WebDriverWait(_browserHelper.getWebDriver(), Duration.ofSeconds(BaseUtils.WAIT_TIME));
             wait.until(ExpectedConditions.visibilityOfAllElements(elements));
         }catch (Exception ex){
