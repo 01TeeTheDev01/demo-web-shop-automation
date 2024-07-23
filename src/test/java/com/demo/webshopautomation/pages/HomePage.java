@@ -6,7 +6,6 @@ import com.demo.webshopautomation.repository.IUrlHelper;
 import com.demo.webshopautomation.utils.BaseUtils;
 import com.demo.webshopautomation.utils.UrlSelector;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
